@@ -79,9 +79,7 @@ def find():
         sn4 = result[25]
         sn5 = result[26]
         sn6 = result[27]
-        
-        
-        
+             
     Label(window, text="Name: "+name, justify=LEFT, bg='white').grid(row=5, columnspan=3)
     Label(window, text="Roll No: "+rollno, justify=LEFT, bg='white').grid(row=6, columnspan=3)
     Label(window, text="Gender: "+gender, justify=LEFT, bg='white').grid(row=7, columnspan=3)
@@ -118,7 +116,7 @@ def find():
     Button(window, text="Show Marks in Graph", command=graph).grid(row=10, column=1)
 
 def graph():
-    data ={str(s1):m1,str(s2):m2,str(s3):m3,str(s4):m4,str(s5):m5,str(s6):m6}
+    data ={str(sn1):m1,str(sn2):m2,str(sn3):m3,str(sn4):m4,str(sn5):m5,str(sn6):m6}
     sub = list(data.keys())
     values = list(data.values())
     fig = plt.figure(figsize=(10,5))
@@ -127,34 +125,7 @@ def graph():
     plt.ylabel("Marks")
     plt.title("Graphical Representation of Marks")
     plt.show()        
-    Label(window, text="Name: "+name, justify=LEFT, bg='white').grid(row=5, columnspan=3)
-    Label(window, text="Roll No: "+rollno, justify=LEFT, bg='white').grid(row=6, columnspan=3)
-    Label(window, text="Gender: "+gender, justify=LEFT, bg='white').grid(row=7, columnspan=3)
-    Tableframe = Frame(window).grid(row=8,columnspan=3)
-    Table = ttk.Treeview(Tableframe)
-
-    Table['columns'] = ('SUB CODE', 'MARKS', 'GRADE')
-
-    Table.column('#0', width=0, stretch=NO)
-    Table.column('SUB CODE', anchor=CENTER, width=100)
-    Table.column('MARKS', anchor=CENTER, width=100)
-    Table.column('GRADE', anchor=CENTER, width=100)
-
-    Table.heading('#0',anchor=CENTER)
-    Table.heading('SUB CODE', text='SUB CODE', anchor=CENTER)
-    Table.heading('MARKS', text='MARKS', anchor=CENTER)
-    Table.heading('GRADE', text='GRADE', anchor=CENTER)
-
-    Table.insert(parent='', index='end', iid=0, text='', values=(s1,m1,g1))
-    Table.insert(parent='', index='end', iid=1, text='', values=(s2,m2,g2))
-    Table.insert(parent='', index='end', iid=2, text='', values=(s3,m3,g3))
-    Table.insert(parent='', index='end', iid=3, text='', values=(s4,m4,g4))
-    Table.insert(parent='', index='end', iid=4, text='', values=(s5,m5,g5))
-    Table.insert(parent='', index='end', iid=5, text='', values=(s6,m6,g6))
-    Table.grid(row=8, columnspan=3)
-
-    Button(window, text="Download").grid(row=9, columnspan=3)
-
+    
 def download():
     #PDF generation
     global pdf, flow_obj
@@ -184,6 +155,7 @@ def download():
         [s6,sn6,m6,g6]
     ]
     para = Paragraph('''Marksheet''', parastyle)
+    
     # para.drawOn(pdf, height=10, width=10)
     
     table = Table(td, colWidths=120, rowHeights=40)
